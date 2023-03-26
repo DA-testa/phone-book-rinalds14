@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "Sample 1",
+      "setup": "",
+      "run": "python3 main.py",
+      "input": "12\r\nadd 911 police\r\nadd 76213 Mom\r\nadd 17239 Bob\r\nfind 76213\r\nfind 910\r\nfind 911\r\ndel 910\r\ndel 911\r\nfind 911\r\nfind 76213\r\nadd 76213 daddy\r\nfind 76213",
+      "output": "Mom\r\nnot found\r\npolice\r\nnot found\r\nMom\r\ndaddy",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 0
+    },
+    {
+      "name": "Sample 2",
+      "setup": "",
+      "run": "python3 main.py",
+      "input": "8\r\nfind 3839442\r\nadd 123456 me\r\nadd 0 granny\r\nfind 0\r\nfind 123456\r\ndel 0\r\ndel 0\r\nfind 0",
+      "output": "not found\r\ngranny\r\nme\r\nnot found",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 0
+    }
+  ]
+}
