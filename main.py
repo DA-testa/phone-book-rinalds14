@@ -1,5 +1,4 @@
-# python3
-
+#221RDB489 Rinalds Dobelis 16.grupa
 class Query:
     def __init__(self, query):
         self.type = query[0]
@@ -16,32 +15,20 @@ def write_responses(result):
 
 def process_queries(queries):
     result = []
-    # Keep list of all existing (i.e. not deleted yet) contacts.
-    contacts = []
+    # Keep dictionary of all existing (i.e. not deleted yet) contacts.
+    contacts = {}
     for cur_query in queries:
         if cur_query.type == 'add':
             # if we already have contact with such number,
-            # we should rewrite contact's name
-            for contact in contacts:
-                if contact.number == cur_query.number:
-                    contact.name = cur_query.name
-                    break
-            else: # otherwise, just add it
-                contacts.append(cur_query)
+            # we should overwrite contact's name
+            contacts[cur_query.number] = cur_query.name
         elif cur_query.type == 'del':
-            for j in range(len(contacts)):
-                if contacts[j].number == cur_query.number:
-                    contacts.pop(j)
-                    break
+            if cur_query.number in contacts:
+                del contacts[cur_query.number]
         else:
-            response = 'not found'
-            for contact in contacts:
-                if contact.number == cur_query.number:
-                    response = contact.name
-                    break
+            response = contacts.get(cur_query.number, 'not found')
             result.append(response)
     return result
 
 if __name__ == '__main__':
     write_responses(process_queries(read_queries()))
-
