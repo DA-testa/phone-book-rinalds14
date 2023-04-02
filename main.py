@@ -1,3 +1,4 @@
+#221RDB489 Rinalds Dobelis 16.grupa
 class Query:
     def __init__(self, query):
         self.type = query[0]
